@@ -1,0 +1,18 @@
+version: '2'
+networks:
+  api:
+    driver: "bridge"
+services: 
+  frontend_vue3:
+    build:
+      context: .
+      dockerfile: ./docker/dockerfile
+    container_name: frontend_vue3
+    ports:
+      - 8080:8080
+      - 8000:8000
+    volumes: 
+      - ./frontend:/home/
+    tty: true
+    networks: 
+      - api
