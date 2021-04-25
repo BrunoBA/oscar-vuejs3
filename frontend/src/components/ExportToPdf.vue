@@ -1,5 +1,5 @@
 <template>
-<span @click="exportChoices()" class="btn btn-warning">
+<span @click="exportChoices()" class="btn btn-warning no-select">
   Export to PDF
 </span>
 </template>
@@ -41,4 +41,7 @@ export default class ExportToPdf extends Vue {
 
 <style scoped>
 
+.no-select {
+  user-select: none;
+}
 </style>

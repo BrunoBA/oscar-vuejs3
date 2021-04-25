@@ -1,30 +1,35 @@
 <template>
   <div class="container-fluid">
-    <h1>{{ title }}</h1>
+    <h1 class="no-select">{{ title }}</h1>
     <div class="row">
       <div class="col-6">
-        <span class="clickable" @click="previousCategory" v-show="disablePrevious">Previous</span>
+        <span class="clickable no-select" @click="previousCategory" v-show="disablePrevious">Previous</span>
       </div>
       <div class="col-6">
-        <span class="clickable" @click="nextCategory" v-show="disableNext">Next</span>
+        <span class="clickable no-select" @click="nextCategory" v-show="disableNext">Next</span>
       </div>
     </div>
     <template v-if="!isLoading">
       <div class="row m-5">
-        <div class="col-12 text-uppercase font-weight-bold">
+        <div class="col-12 text-uppercase font-weight-bold no-select">
           {{ getCurrentCategoryName }}
         </div>
       </div>
-      <ul class="row list-group">
-        <li @click="selectWinner(winner)" class="list-group-item list-group-item-action text-center clickable"
-            :class="{
+      <div class="row justify-content-md-center">
+        <div class="col-8">
+          <ul class="list-group">
+            <li @click="selectWinner(winner)"
+                class="list-group-item list-group-item-action text-center clickable no-select"
+                :class="{
               'list-group-item-warning font-weight-bold': winner === betForCurrentCategory
             }"
-            :key="nominee"
-            v-for="(nominee, winner) in getNominees">
-          {{ nominee }}
-        </li>
-      </ul>
+                :key="nominee"
+                v-for="(nominee, winner) in getNominees">
+              {{ nominee }}
+            </li>
+          </ul>
+        </div>
+      </div>
       <div v-show="isComplete" class="row">
         <div class="mt-5 col-12 text-center">
           <ExportToPdf :bets="bets"/>
@@ -116,6 +121,11 @@ export default class HelloWorld extends Vue {
 </script>
 
 <style scoped>
+
+.no-select {
+  user-select: none;
+}
+
 .clickable {
   cursor: pointer;
 }
