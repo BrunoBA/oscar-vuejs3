@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="row justify-content-md-center">
-        <div class="col-8">
+        <div class="col-12 col-md-8">
           <ul class="list-group">
             <li @click="selectWinner(winner)"
                 class="list-group-item list-group-item-action text-center clickable no-select"

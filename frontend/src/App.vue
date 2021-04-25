@@ -1,5 +1,5 @@
 <template>
-  <HelloWorld title="Select your nominees"/>
+  <HelloWorld title="OSCAR 2021"/>
 </template>
 
 <script lang="ts">
