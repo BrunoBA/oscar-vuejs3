@@ -18,8 +18,23 @@ import {Bets} from '@/model/Bets';
 export default class ExportToPdf extends Vue {
   bets!: Bets
 
-  exportChoices() {
-    console.log(JSON.stringify(this.bets))
+  async exportChoices() {
+    try {
+      const response = await fetch('http://localhost:80/oscar', {
+        method: 'post',
+        body: JSON.stringify(this.bets)
+      })
+      const hash = await response.text()
+      console.log(hash)
+
+      window.location.href = `http://localhost:80/oscar/${hash}?render`
+      await fetch(`http://localhost:80/oscar/${hash}?render`).finally(() => {
+        console.log('done')
+      })
+
+    } catch (Error) {
+      alert('Sorry Try again later')
+    }
   }
 }
 </script>
