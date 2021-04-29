@@ -62,7 +62,7 @@ export default class HelloWorld extends Vue {
   private bets = new Bets([]);
 
   async created() {
-    const request = await axios.get('http://localhost:80/oscar');
+    const request = await axios.get('http://oscar.app.br:80/oscar');
     this.isLoading = false;
     this.categories = request.data;
   }

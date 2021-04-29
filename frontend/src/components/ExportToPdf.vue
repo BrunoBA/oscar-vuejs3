@@ -20,15 +20,15 @@ export default class ExportToPdf extends Vue {
 
   async exportChoices() {
     try {
-      const response = await fetch('http://localhost:80/oscar', {
+      const response = await fetch('http://oscar.app.br:80/oscar', {
         method: 'post',
         body: JSON.stringify(this.bets)
       })
       const hash = await response.text()
       console.log(hash)
 
-      window.location.href = `http://localhost:80/oscar/${hash}?render`
-      await fetch(`http://localhost:80/oscar/${hash}?render`).finally(() => {
+      window.location.href = `http://oscar.app.br:80/oscar/${hash}?render`
+      await fetch(`http://oscar.app.br:80/oscar/${hash}?render`).finally(() => {
         console.log('done')
       })
 
