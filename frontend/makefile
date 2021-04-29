@@ -20,7 +20,7 @@ login:
 	docker login
 tag: login
 	docker tag $(IMAGE_NAME) $(USERNAME)/$(IMAGE_NAME):$(HASH)
-push: tag
+push: build tag
 	@echo "Pushing image to DOCKER HUB"
 	docker push $(USERNAME)/$(IMAGE_NAME):$(HASH)
 
